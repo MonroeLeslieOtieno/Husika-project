@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Directory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="staff.css">
+</head>
+<body>
+
+  <header class="board-header">
+    <p class="board-header__eyebrow">Building Directory</p>
+    <h1 class="board-header__title">Our Team</h1>
+    <p class="board-header__sub">Who's who, and what they handle.</p>
+  </header>
+
+  <main class="board">
+
+    <section class="dept" aria-labelledby="dept-leadership">
+      <div class="dept__label">
+        <span class="dept__code">01</span>
+        <h2 id="dept-leadership">Leadership</h2>
+      </div>
+
+      <ul class="slot-list">
+        <li class="slot">
+          <span class="slot__initials">AK</span>
+          <span class="slot__name">Amara Kessler</span>
+          <span class="slot__title">Founder &amp; CEO</span>
+          <span class="slot__duty">Sets company direction, oversees strategy and partnerships</span>
+        </li>
+        <li class="slot">
+          <span class="slot__initials">DR</span>
+          <span class="slot__name">David Reyes</span>
+          <span class="slot__title">Chief Operating Officer</span>
+          <span class="slot__duty">Runs day-to-day operations, budgets, and vendor relationships</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="dept" aria-labelledby="dept-product">
+      <div class="dept__label">
+        <span class="dept__code">02</span>
+        <h2 id="dept-product">Product &amp; Design</h2>
+      </div>
+
+      <ul class="slot-list">
+        <li class="slot">
+          <span class="slot__initials">NP</span>
+          <span class="slot__name">Nadia Petrova</span>
+          <span class="slot__title">Head of Product</span>
+          <span class="slot__duty">Owns the product roadmap and prioritizes feature work</span>
+        </li>
+        <li class="slot">
+          <span class="slot__initials">JO</span>
+          <span class="slot__name">Jamal Osei</span>
+          <span class="slot__title">Lead Designer</span>
+          <span class="slot__duty">Designs the user interface and maintains the visual brand</span>
+        </li>
+        <li class="slot">
+          <span class="slot__initials">EL</span>
+          <span class="slot__name">Elena Lindqvist</span>
+          <span class="slot__title">UX Researcher</span>
+          <span class="slot__duty">Runs user interviews and usability testing</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="dept" aria-labelledby="dept-support">
+      <div class="dept__label">
+        <span class="dept__code">03</span>
+        <h2 id="dept-support">Customer Support</h2>
+      </div>
+
+      <ul class="slot-list">
+        <li class="slot">
+          <span class="slot__initials">TW</span>
+          <span class="slot__name">Tariq Whitfield</span>
+          <span class="slot__title">Support Team Lead</span>
+          <span class="slot__duty">Manages the support queue and escalations</span>
+        </li>
+        <li class="slot">
+          <span class="slot__initials">MC</span>
+          <span class="slot__name">Mei Chen</span>
+          <span class="slot__title">Customer Success Associate</span>
+          <span class="slot__duty">Onboards new customers and answers day-to-day questions</span>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="board-footer">
+    <p>Replace the names, titles, and duties above with your own team — each entry lives inside a <code>&lt;li class="slot"&gt;</code> in staff.html.</p>
+  </footer>
+
+</body>
+</html>
