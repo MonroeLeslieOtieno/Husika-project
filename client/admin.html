@@ -6,6 +6,14 @@
   <title>Husika Events — Admin Dashboard</title>
   <link rel="stylesheet" href="admin.css" />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+
+  <style>
+    a.qa-btn, a.card-link {
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
 
@@ -21,32 +29,32 @@
 
     <nav class="sidebar-nav">
       <p class="nav-group-label">Overview</p>
-      <a href="#" class="sidebar-link active" data-panel="dashboard">
+      <a href="admin.html" class="sidebar-link active">
         <span class="slink-icon">📊</span> Dashboard
       </a>
 
       <p class="nav-group-label">Content</p>
-      <a href="#" class="sidebar-link" data-panel="activities">
+      <a href="activities.html" class="sidebar-link">
         <span class="slink-icon">📅</span> Activities
       </a>
-      <a href="#" class="sidebar-link" data-panel="gallery">
+      <a href="gallery.html" class="sidebar-link">
         <span class="slink-icon">🖼️</span> Gallery
       </a>
-      <a href="#" class="sidebar-link" data-panel="about">
+      <a href="about.html" class="sidebar-link">
         <span class="slink-icon">🏛️</span> Org. Info
       </a>
 
       <p class="nav-group-label">Community</p>
-      <a href="#" class="sidebar-link" data-panel="reports">
+      <a href="reports.html" class="sidebar-link">
         <span class="slink-icon">🚨</span> Incident Reports
         <span class="sidebar-badge">4</span>
       </a>
-      <a href="#" class="sidebar-link" data-panel="members">
+      <a href="members.html" class="sidebar-link">
         <span class="slink-icon">👥</span> Members
       </a>
 
       <p class="nav-group-label">System</p>
-      <a href="#" class="sidebar-link" data-panel="settings">
+      <a href="settings.html" class="sidebar-link">
         <span class="slink-icon">⚙️</span> Settings
       </a>
     </nav>
@@ -54,7 +62,7 @@
     <div class="sidebar-user">
       <div class="user-avatar">ML</div>
       <div class="user-info">
-        <strong>ADMIN MONROE/strong>
+        <strong>ADMIN MONROE</strong>
         <span>Super Admin</span>
       </div>
       <a href="index.html" class="logout-btn" title="Back to Site">↩</a>
@@ -126,7 +134,7 @@
         <div class="dash-card">
           <div class="dash-card-head">
             <h3>Latest Incident Reports</h3>
-            <button class="card-link" onclick="switchPanel('reports')">View all →</button>
+            <a href="reports.html" class="card-link">View all →</a>
           </div>
           <table class="mini-table">
             <thead><tr><th>Type</th><th>Location</th><th>Date</th><th>Status</th></tr></thead>
@@ -159,7 +167,7 @@
         <div class="dash-card">
           <div class="dash-card-head">
             <h3>New Members</h3>
-            <button class="card-link" onclick="switchPanel('members')">View all →</button>
+            <a href="members.html" class="card-link">View all →</a>
           </div>
           <ul class="member-list">
             <li>
@@ -189,7 +197,7 @@
         <div class="dash-card">
           <div class="dash-card-head">
             <h3>Activities This Month</h3>
-            <button class="card-link" onclick="switchPanel('activities')">Manage →</button>
+            <a href="activities.html" class="card-link">Manage →</a>
           </div>
           <div class="activity-bars">
             <div class="abar-row"><span>Children's Workshops</span><div class="abar-wrap"><div class="abar" style="width:85%;background:var(--green-mid)"></div></div><span>5</span></div>
@@ -203,30 +211,30 @@
         <div class="dash-card">
           <div class="dash-card-head"><h3>Quick Actions</h3></div>
           <div class="quick-actions">
-            <button class="qa-btn" onclick="switchPanel('activities')">
+            <a href="activities.html" class="qa-btn">
               <span class="qa-icon">➕</span>
               <span>Add Activity</span>
-            </button>
-            <button class="qa-btn" onclick="switchPanel('gallery')">
+            </a>
+            <a href="gallery.html" class="qa-btn">
               <span class="qa-icon">📷</span>
               <span>Upload Image</span>
-            </button>
-            <button class="qa-btn" onclick="switchPanel('reports')">
+            </a>
+            <a href="reports.html" class="qa-btn">
               <span class="qa-icon">📋</span>
               <span>View Reports</span>
-            </button>
-            <button class="qa-btn" onclick="switchPanel('members')">
+            </a>
+            <a href="members.html" class="qa-btn">
               <span class="qa-icon">👤</span>
               <span>Add Member</span>
-            </button>
-            <button class="qa-btn" onclick="switchPanel('about')">
+            </a>
+            <a href="about.html" class="qa-btn">
               <span class="qa-icon">✏️</span>
               <span>Edit Org Info</span>
-            </button>
-            <button class="qa-btn" onclick="switchPanel('settings')">
+            </a>
+            <a href="settings.html" class="qa-btn">
               <span class="qa-icon">⚙️</span>
               <span>Settings</span>
-            </button>
+            </a>
           </div>
         </div>
 

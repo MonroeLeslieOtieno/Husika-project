@@ -1,218 +1,418 @@
 /* ============================================
-   Tokens
+   HUSIKA EVENTS — staff.css
+   Staff / Team Directory Page
    ============================================ */
-:root {
-  --board:        #23281f;   /* charcoal-green board panel */
-  --board-edge:    #171b14;
-  --slot:         #eee7d6;   /* inset cream slot */
-  --slot-shadow:  #b9ad8e;
-  --ink:          #1c1a15;
-  --amber:        #c98a2e;   /* directory-board amber accent */
-  --amber-dim:    #8f6320;
-  --teal:         #2f6e62;   /* secondary accent */
-  --paper:        #f4f1e8;
-  --muted:        #6b6555;
 
-  --font-display: 'Oswald', sans-serif;
-  --font-body:    'Source Sans 3', sans-serif;
-  --font-mono:    'Space Mono', monospace;
+/* ── Google Fonts (match main site) ── */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap');
+
+/* ── Design Tokens (mirrors styles.css :root) ── */
+:root {
+  /* Brand palette */
+  --green-deep:   #1A5C2A;
+  --green-mid:    #2A7A3B;
+  --green-light:  #E8F5EC;
+  --green-xlight: #F2FAF4;
+  --teal:         #00A896;
+  --teal-light:   #E0F5F3;
+  --gold:         #F5C518;
+  --gold-dark:    #C9A010;
+  --gold-light:   #FEF8DC;
+  --red:          #E8231A;
+  --red-light:    #FDECEB;
+
+  /* Neutrals */
+  --white:        #FFFFFF;
+  --off-white:    #F8FAF8;
+  --paper:        #F4F1E8;   /* kept from original — works as warm page bg */
+  --text-dark:    #111C14;
+  --text-mid:     #3D4F40;
+  --text-muted:   #6B7C6E;
+  --border:       #D4E6D6;
+  --border-dark:  #B5CFB8;
+
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Nunito', 'Segoe UI', sans-serif;
+  --font-mono:    'Courier New', Courier, monospace;
+
+  /* Spacing / radii / shadows */
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
+  --shadow-sm:   0 2px 8px  rgba(26, 92, 42, 0.08);
+  --shadow-md:   0 6px 24px rgba(26, 92, 42, 0.12);
+  --shadow-lg:   0 18px 40px rgba(26, 92, 42, 0.14);
+
+  /* Nav height — used to offset sticky header */
+  --nav-h: 70px;
 }
 
-* { box-sizing: border-box; }
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 html { scroll-behavior: smooth; }
 
 body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--off-white);
+  color: var(--text-dark);
   font-family: var(--font-body);
-  line-height: 1.5;
+  line-height: 1.65;
+  font-size: 16px;
 }
 
 /* ============================================
-   Header
+   Page Header — mirrors the hero eyebrow
+   style used across the main site
    ============================================ */
 .board-header {
-  padding: 4.5rem 1.5rem 2.5rem;
+  background: var(--green-deep);
+  background-image:
+    radial-gradient(ellipse at 70% 30%, rgba(0, 168, 150, 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse at 15% 80%, rgba(245, 197, 24, 0.10) 0%, transparent 50%);
+  padding: 80px 24px 60px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Left gold accent bar — same motif as hero section */
+.board-header::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 6px;
+  background: linear-gradient(to bottom, var(--gold), var(--teal));
 }
 
 .board-header__eyebrow {
-  margin: 0 0 0.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.28em;
+  display: inline-block;
+  background: rgba(245, 197, 24, 0.15);
+  color: var(--gold);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--amber-dim);
+  padding: 6px 18px;
+  border-radius: 50px;
+  border: 1px solid rgba(245, 197, 24, 0.35);
+  margin-bottom: 18px;
 }
 
 .board-header__title {
-  margin: 0;
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: var(--ink);
+  font-weight: 900;
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  letter-spacing: 0.01em;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 12px;
 }
 
 .board-header__sub {
-  margin: 0.6rem 0 0;
-  color: var(--muted);
-  font-size: 1.05rem;
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 520px;
+  margin: 0 auto;
 }
 
 /* ============================================
-   Board + Departments
+   Main Board Container
    ============================================ */
 .board {
-  max-width: 880px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 0 1.5rem 4rem;
+  padding: 56px 24px 80px;
   display: flex;
   flex-direction: column;
-  gap: 2.25rem;
+  gap: 28px;
 }
 
+/* ============================================
+   Department Card — replaces charcoal board
+   with the site's green-panel aesthetic
+   ============================================ */
 .dept {
-  background: var(--board);
-  border: 1px solid var(--board-edge);
-  border-radius: 6px;
-  padding: 1.75rem;
-  box-shadow: 0 18px 30px -20px rgba(0, 0, 0, 0.55);
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  box-shadow: var(--shadow-md);
+  transition: box-shadow 0.2s;
 }
 
+.dept:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Department label row */
 .dept__label {
   display: flex;
   align-items: baseline;
-  gap: 0.75rem;
-  padding-bottom: 0.9rem;
-  margin-bottom: 0.9rem;
-  border-bottom: 2px solid var(--amber);
+  gap: 12px;
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+  border-bottom: 3px solid var(--gold);
 }
 
+/* Short dept code — kept from original, restyled */
 .dept__code {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
-  color: var(--amber);
-  letter-spacing: 0.08em;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold-dark);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: var(--gold-light);
+  padding: 3px 10px;
+  border-radius: 50px;
+  flex-shrink: 0;
 }
 
 .dept__label h2 {
-  margin: 0;
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 700;
   font-size: 1.35rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--paper);
+  letter-spacing: 0.02em;
+  color: var(--green-deep);
+  line-height: 1.2;
 }
 
 /* ============================================
-   Slots (staff rows)
+   Slot List (staff rows)
    ============================================ */
 .slot-list {
   list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 10px;
 }
 
+/* Individual staff slot */
 .slot {
   display: grid;
   grid-template-columns: 3rem 1fr 1fr;
   grid-template-areas:
-    "initials name   name"
-    "initials title  title"
-    "initials duty   duty";
+    "initials name  name"
+    "initials title title"
+    "initials duty  duty";
   align-items: center;
-  column-gap: 1rem;
-  row-gap: 0.15rem;
-  background: var(--slot);
-  border-radius: 3px;
-  padding: 0.85rem 1.1rem;
-  box-shadow: inset 0 0 0 1px var(--slot-shadow);
+  column-gap: 14px;
+  row-gap: 2px;
+
+  background: var(--green-xlight);
+  border: 1.5px solid var(--border);
+  border-left: 4px solid var(--green-deep);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  transition: background 0.15s, border-color 0.15s, transform 0.15s;
 }
 
+.slot:hover {
+  background: var(--green-light);
+  border-left-color: var(--teal);
+  transform: translateX(3px);
+}
+
+/* Avatar circle */
 .slot__initials {
   grid-area: initials;
   align-self: center;
   width: 2.75rem;
   height: 2.75rem;
   border-radius: 50%;
-  background: var(--teal);
-  color: var(--paper);
-  font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: 0.85rem;
+  background: var(--green-deep);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: 0.03em;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(26, 92, 42, 0.25);
+  transition: background 0.15s;
 }
 
+.slot:hover .slot__initials {
+  background: var(--teal);
+}
+
+/* Full name */
 .slot__name {
   grid-area: name;
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.15rem;
-  color: var(--ink);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text-dark);
   letter-spacing: 0.01em;
 }
 
+/* Role title */
 .slot__title {
   grid-area: title;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--amber-dim);
+  color: var(--gold-dark);
 }
 
+/* Duty / description */
 .slot__duty {
   grid-area: duty;
-  font-size: 0.95rem;
-  color: var(--muted);
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ── Teal variant for leadership slots ── */
+.slot--lead {
+  border-left-color: var(--gold-dark);
+  background: var(--gold-light);
+}
+
+.slot--lead .slot__initials {
+  background: var(--gold-dark);
+}
+
+.slot--lead:hover {
+  border-left-color: var(--gold-dark);
+  background: #fef3c0;
+}
+
+.slot--lead:hover .slot__initials {
+  background: var(--gold-dark);
+}
+
+/* ── Teal dept variant ── */
+.dept--teal .dept__label {
+  border-bottom-color: var(--teal);
+}
+
+.dept--teal .dept__code {
+  background: var(--teal-light);
+  color: var(--teal);
+}
+
+.dept--teal .dept__label h2 {
+  color: var(--teal);
+}
+
+.dept--teal .slot {
+  border-left-color: var(--teal);
+}
+
+.dept--teal .slot__initials {
+  background: var(--teal);
+}
+
+.dept--teal .slot:hover {
+  border-left-color: var(--green-deep);
+}
+
+.dept--teal .slot:hover .slot__initials {
+  background: var(--green-deep);
+}
+
+/* ── Red / alert dept variant (e.g. Child Protection) ── */
+.dept--alert .dept__label {
+  border-bottom-color: var(--red);
+}
+
+.dept--alert .dept__code {
+  background: var(--red-light);
+  color: var(--red);
+}
+
+.dept--alert .dept__label h2 {
+  color: var(--red);
+}
+
+.dept--alert .slot {
+  border-left-color: var(--red);
+}
+
+.dept--alert .slot__initials {
+  background: var(--red);
+}
+
+.dept--alert .slot:hover {
+  border-left-color: var(--green-deep);
+}
+
+.dept--alert .slot:hover .slot__initials {
+  background: var(--green-deep);
 }
 
 /* ============================================
-   Footer
+   Footer — matches site's footer aesthetic
    ============================================ */
 .board-footer {
-  max-width: 880px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 0 1.5rem 4rem;
+  padding: 0 24px 60px;
   text-align: center;
-  color: var(--muted);
-  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-size: 14px;
+  border-top: 1.5px solid var(--border);
+  padding-top: 32px;
 }
 
 .board-footer code {
   font-family: var(--font-mono);
-  background: rgba(0, 0, 0, 0.06);
-  padding: 0.1rem 0.35rem;
-  border-radius: 3px;
+  font-size: 12px;
+  background: var(--green-light);
+  color: var(--green-deep);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.board-footer a {
+  color: var(--teal);
+  font-weight: 700;
+  text-decoration: underline;
+  transition: color 0.15s;
+}
+
+.board-footer a:hover {
+  color: var(--green-deep);
 }
 
 /* ============================================
    Responsive
    ============================================ */
-@media (max-width: 560px) {
+@media (max-width: 580px) {
+  .board-header { padding: 56px 20px 40px; }
+
+  .board { padding: 32px 16px 60px; }
+
+  .dept { padding: 20px 16px; }
+
   .slot {
     grid-template-columns: 2.5rem 1fr;
     grid-template-areas:
       "initials name"
       "initials title"
       "initials duty";
+    padding: 12px 14px;
   }
 
   .slot__initials {
     width: 2.25rem;
     height: 2.25rem;
-    font-size: 0.75rem;
+    font-size: 11px;
   }
+
+  .slot__name { font-size: 1rem; }
 }
 
 /* ============================================
@@ -220,10 +420,13 @@ body {
    ============================================ */
 a:focus-visible,
 button:focus-visible {
-  outline: 3px solid var(--teal);
-  outline-offset: 2px;
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .slot, .dept, .slot__initials {
+    transition: none;
+  }
 }
